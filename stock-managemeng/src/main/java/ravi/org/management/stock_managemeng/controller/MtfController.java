@@ -1,34 +1,43 @@
 package ravi.org.management.stock_managemeng.controller;
 
 import org.springframework.web.bind.annotation.*;
+import ravi.org.management.stock_managemeng.dao.Mtf;
+import ravi.org.management.stock_managemeng.service.MtfService;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/mtf")
 public class MtfController {
 
+    private final MtfService mtfService;
+
+    public MtfController(MtfService mtfService) {
+        this.mtfService = mtfService;
+    }
+
     @GetMapping("/all")
-    public List<String> getAllMtfRecords() {
-        return null; // TODO: Implement logic
+    public List<Mtf> getAllMtfRecords() {
+        return mtfService.getAllMtfRecords();
     }
 
     @GetMapping("/{mtfId}")
-    public String getMtfRecordById(@PathVariable String mtfId) {
-        return null; // TODO: Implement logic
+    public Mtf getMtfRecordById(@PathVariable String mtfId) {
+        return mtfService.getMtfRecordById(mtfId);
     }
 
     @PostMapping("/save")
-    public String saveMtfRecord(@RequestBody String mtfRecord) {
-        return null; // TODO: Implement logic
+    public Mtf saveMtfRecord(@RequestBody Mtf mtfRecord) {
+        return mtfService.saveMtfRecord(mtfRecord);
     }
 
     @PutMapping("/update/{mtfId}")
-    public String updateMtfRecord(@PathVariable String mtfId, @RequestBody String mtfRecord) {
-        return null; // TODO: Implement logic
+    public Mtf updateMtfRecord(@PathVariable String mtfId, @RequestBody Mtf mtfRecord) {
+        return mtfService.updateMtfRecord(mtfId, mtfRecord);
     }
 
     @DeleteMapping("/delete/{mtfId}")
-    public String deleteMtfRecord(@PathVariable String mtfId) {
-        return null; // TODO: Implement logic
+    public boolean deleteMtfRecord(@PathVariable String mtfId) {
+        return mtfService.deleteMtfRecord(mtfId);
     }
 }

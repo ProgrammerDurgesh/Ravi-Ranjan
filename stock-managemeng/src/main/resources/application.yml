@@ -1,1 +1,3 @@
-spring.application.name=stock-managemeng
+spring:
+  application:
+    name: stock-management

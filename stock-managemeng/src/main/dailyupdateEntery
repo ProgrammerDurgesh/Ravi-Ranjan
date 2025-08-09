@@ -1,0 +1,25 @@
+Basic Knowledge of project structure
+.mvn --> maven : Maven is manage all dependency inject automatically
+dependency : dependency is a collection of jar's
+jar: collection packages & classes .....other details like ENUM
+
+Package : collection of classes
+
+dao : all entity classes
+    entity class: the entity class that can store in or database for ex : user
+controller : all api url classes, all api request come on the controller classes
+    for ex: /login, /signup, /register ,
+dto : all dto as per requirement
+security : all security module under this package
+service : All service classes under this package
+
+Requests :
+Post
+Get
+Update(PUT)
+Delete
+PETCH
+
+
+
+

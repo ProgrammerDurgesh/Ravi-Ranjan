@@ -1,7 +1,8 @@
 package ravi.org.management.stock_managemeng.dao;
 
+import javax.persistence.Entity;
 import java.math.BigDecimal;
-
+@Entity
 public class Share {
     //this is entity class
     private String id;

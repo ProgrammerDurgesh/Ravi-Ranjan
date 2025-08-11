@@ -1,8 +1,9 @@
 package ravi.org.management.stock_managemeng.dao;
 
+import javax.persistence.Entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
+@Entity
 public class Mtf {
 
     private String id;                   // MTF record ID

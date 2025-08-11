@@ -1,6 +1,7 @@
 package ravi.org.management.stock_managemeng.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import ravi.org.management.stock_managemeng.dao.Mtf;
 
-public interface ShareRepo extends JpaRepository<ShareRepo,String> {
+public interface MtfRepo extends JpaRepository<Mtf,String> {
 }

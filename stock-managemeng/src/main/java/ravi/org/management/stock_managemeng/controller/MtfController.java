@@ -1,7 +1,5 @@
 package ravi.org.management.stock_managemeng.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ravi.org.management.stock_managemeng.dao.Mtf;
 import ravi.org.management.stock_managemeng.service.MtfService;
@@ -19,42 +17,27 @@ public class MtfController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Mtf>> getAllMtfRecords() {
-        List<Mtf> mtfList = mtfService.getAllMtfRecords();
-        return ResponseEntity.ok(mtfList);
+    public List<Mtf> getAllMtfRecords() {
+        return mtfService.getAllMtfRecords();
     }
 
     @GetMapping("/{mtfId}")
-    public ResponseEntity<Mtf> getMtfRecordById(@PathVariable String mtfId) {
-        Mtf mtf = mtfService.getMtfRecordById(mtfId);
-        if (mtf == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(mtf);
+    public Mtf getMtfRecordById(@PathVariable int mtfId) {
+        return mtfService.getMtfRecordById(mtfId);
     }
 
-    @PostMapping
-    public ResponseEntity<Mtf> saveMtfRecord(@RequestBody Mtf mtfRecord) {
-        Mtf saved = mtfService.saveMtfRecord(mtfRecord);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    @PostMapping("/save")
+    public Mtf saveMtfRecord(@RequestBody Mtf mtfRecord) {
+        return mtfService.saveMtfRecord(mtfRecord);
     }
 
-    @PutMapping("/{mtfId}")
-    public ResponseEntity<Mtf> updateMtfRecord(@PathVariable String mtfId, @RequestBody Mtf mtfRecord) {
-        Mtf updated = mtfService.updateMtfRecord(mtfId, mtfRecord);
-        if (updated == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(updated);
+    @PutMapping("/update/{mtfId}")
+    public Mtf updateMtfRecord(@PathVariable int mtfId, @RequestBody Mtf mtfRecord) {
+        return mtfService.updateMtfRecord(mtfId, mtfRecord);
     }
 
-    @DeleteMapping("/{mtfId}")
-    public ResponseEntity<Void> deleteMtfRecord(@PathVariable String mtfId) {
-        boolean deleted = mtfService.deleteMtfRecord(mtfId);
-        if (deleted) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @DeleteMapping("/delete/{mtfId}")
+    public boolean deleteMtfRecord(@PathVariable int mtfId) {
+        return mtfService.deleteMtfRecord(mtfId);
     }
 }

@@ -1,12 +1,15 @@
 package ravi.org.management.stock_managemeng.dao;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 @Entity
+@Table(name = "Mtf")
 public class Mtf {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private String id;                   // MTF record ID
+    private int id;                   // MTF record ID
     private String customerId;           // Customer ID
     private String shareSymbol;          // Stock symbol
     private int quantity;                 // Number of shares under MTF
@@ -20,7 +23,7 @@ public class Mtf {
     public Mtf() {
     }
 
-    public Mtf(String id, String customerId, String shareSymbol, int quantity, BigDecimal loanAmount,
+    public Mtf(int id, String customerId, String shareSymbol, int quantity, BigDecimal loanAmount,
                BigDecimal interestRate, BigDecimal marginPercentage, LocalDate startDate,
                LocalDate expiryDate, String status) {
         this.id = id;
@@ -36,11 +39,11 @@ public class Mtf {
     }
 
     // Getters & Setters
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

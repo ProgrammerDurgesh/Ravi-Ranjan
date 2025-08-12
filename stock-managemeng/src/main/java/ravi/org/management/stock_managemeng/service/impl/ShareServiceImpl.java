@@ -21,7 +21,7 @@ public class ShareServiceImpl implements ShareService {
     }
 
     @Override
-    public Share getShareById(String shareId) {
+    public Share getShareById(int shareId) {
         return shareRepo.findById(shareId).orElse(null);
     }
 
@@ -31,7 +31,7 @@ public class ShareServiceImpl implements ShareService {
     }
 
     @Override
-    public Share updateShare(String shareId, Share share) {
+    public Share updateShare(int shareId, Share share) {
         Optional<Share> existing = shareRepo.findById(shareId);
         if (existing.isPresent()) {
             share.setId(shareId);
@@ -41,7 +41,7 @@ public class ShareServiceImpl implements ShareService {
     }
 
     @Override
-    public boolean deleteShare(String shareId) {
+    public boolean deleteShare(int shareId) {
         if (shareRepo.existsById(shareId)) {
             shareRepo.deleteById(shareId);
             return true;

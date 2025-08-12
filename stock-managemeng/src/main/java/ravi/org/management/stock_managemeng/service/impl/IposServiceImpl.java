@@ -21,7 +21,7 @@ public class IposServiceImpl implements IposService {
     }
 
     @Override
-    public Ipo getIpoById(String ipoId) {
+    public Ipo getIpoById(int ipoId) {
         return ipoRepo.findById(ipoId).orElse(null);
     }
 
@@ -31,7 +31,7 @@ public class IposServiceImpl implements IposService {
     }
 
     @Override
-    public Ipo updateIpo(String ipoId, Ipo ipo) {
+    public Ipo updateIpo(int ipoId, Ipo ipo) {
         Optional<Ipo> existing = ipoRepo.findById(ipoId);
         if (existing.isPresent()) {
             ipo.setId(ipoId);
@@ -41,7 +41,7 @@ public class IposServiceImpl implements IposService {
     }
 
     @Override
-    public boolean deleteIpo(String ipoId) {
+    public boolean deleteIpo(int ipoId) {
         if (ipoRepo.existsById(ipoId)) {
             ipoRepo.deleteById(ipoId);
             return true;

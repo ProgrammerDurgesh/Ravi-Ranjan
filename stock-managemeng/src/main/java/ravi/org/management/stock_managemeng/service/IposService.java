@@ -9,11 +9,11 @@ public interface IposService {
 
     List<Ipo> getAllIpos();
 
-    Ipo getIpoById(String ipoId);
+    Ipo getIpoById(int ipoId);
 
     Ipo saveIpo(Ipo ipo);
 
-    Ipo updateIpo(String ipoId, Ipo ipo);
+    Ipo updateIpo(int ipoId, Ipo ipo);
 
-    boolean deleteIpo(String ipoId);
+    boolean deleteIpo(int ipoId);
 }

@@ -8,11 +8,11 @@ public interface ShareService {
 
     List<Share> getAllShares();
 
-    Share getShareById(String shareId);
+    Share getShareById(int shareId);
 
     Share saveShare(Share share);
 
-    Share updateShare(String shareId, Share share);
+    Share updateShare(int shareId, Share share);
 
-    boolean deleteShare(String shareId);
+    boolean deleteShare(int shareId);
 }

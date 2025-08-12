@@ -21,7 +21,7 @@ public class MtfServiceImpl implements MtfService {
     }
 
     @Override
-    public Mtf getMtfRecordById(String mtfId) {
+    public Mtf getMtfRecordById(int mtfId) {
         return mtfRepo.findById(mtfId).orElse(null);
     }
 
@@ -31,7 +31,7 @@ public class MtfServiceImpl implements MtfService {
     }
 
     @Override
-    public Mtf updateMtfRecord(String mtfId, Mtf mtfRecord) {
+    public Mtf updateMtfRecord(int mtfId, Mtf mtfRecord) {
         Optional<Mtf> existingRecord = mtfRepo.findById(mtfId);
         if (existingRecord.isPresent()) {
             // Optionally update fields of existingRecord.get() here if partial update is required
@@ -45,7 +45,7 @@ public class MtfServiceImpl implements MtfService {
     }
 
     @Override
-    public boolean deleteMtfRecord(String mtfId) {
+    public boolean deleteMtfRecord(int mtfId) {
         if (mtfRepo.existsById(mtfId)) {
             mtfRepo.deleteById(mtfId);
             return true;

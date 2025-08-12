@@ -1,11 +1,14 @@
 package ravi.org.management.stock_managemeng.dao;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.math.BigDecimal;
 @Entity
+@Table(name = "Share")
 public class Share {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //this is entity class
-    private String id;
+    private int id;
     private String symbol;
     private String companyName;
     private Integer quantity;
@@ -16,11 +19,11 @@ public class Share {
     private String sector;
     private String currency;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

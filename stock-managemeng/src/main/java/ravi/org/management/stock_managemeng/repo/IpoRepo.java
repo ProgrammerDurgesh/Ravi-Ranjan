@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import ravi.org.management.stock_managemeng.dao.Ipo;
 
 @Repository
-public interface IpoRepo extends JpaRepository<Ipo, String> {
+public interface IpoRepo extends JpaRepository<Ipo, Integer> {
     // Custom query methods (if needed)
 }

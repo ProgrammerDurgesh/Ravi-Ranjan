@@ -1,12 +1,15 @@
 package ravi.org.management.stock_managemeng.dao;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 @Entity
-public class Ipo {
+@Table(name = "ipo")
 
-    private String id;                   // IPO ID
+public class Ipo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;                   // IPO ID
     private String companyName;          // Name of the company going public
     private BigDecimal priceBandLow;     // Lower price band
     private BigDecimal priceBandHigh;    // Higher price band
@@ -20,7 +23,7 @@ public class Ipo {
     public Ipo() {
     }
 
-    public Ipo(String id, String companyName, BigDecimal priceBandLow, BigDecimal priceBandHigh, int lotSize,
+    public Ipo(int id, String companyName, BigDecimal priceBandLow, BigDecimal priceBandHigh, int lotSize,
                LocalDate issueStartDate, LocalDate issueEndDate, String exchange, BigDecimal issueSize, String status) {
         this.id = id;
         this.companyName = companyName;
@@ -35,11 +38,11 @@ public class Ipo {
     }
 
     // Getters & Setters
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

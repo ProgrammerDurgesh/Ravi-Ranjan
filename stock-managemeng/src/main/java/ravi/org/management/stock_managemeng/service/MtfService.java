@@ -9,11 +9,11 @@ public interface MtfService {
 
     List<Mtf> getAllMtfRecords();
 
-    Mtf getMtfRecordById(String mtfId);
+    Mtf getMtfRecordById(int mtfId);
 
     Mtf saveMtfRecord(Mtf mtfRecord);
 
-    Mtf updateMtfRecord(String mtfId, Mtf mtfRecord);
+    Mtf updateMtfRecord(int mtfId, Mtf mtfRecord);
 
-    boolean deleteMtfRecord(String mtfId);
+    boolean deleteMtfRecord(int mtfId);
 }

@@ -1,5 +1,7 @@
-package ravi.org.management.stock_management.controller;
+package ravi.org.management.stock_managemeng.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ravi.org.management.stock_managemeng.dao.Ipo;
 import ravi.org.management.stock_managemeng.service.IposService;
@@ -16,28 +18,42 @@ public class IposController {
         this.iposService = iposService;
     }
 
-    @GetMapping("/all")
-    public List<Ipo> getAllIpos() {
-        return iposService.getAllIpos();
+    @GetMapping
+    public ResponseEntity<List<Ipo>> getAllIpos() {
+        List<Ipo> ipos = iposService.getAllIpos();
+        return ResponseEntity.ok(ipos);
     }
 
     @GetMapping("/{ipoId}")
-    public Ipo getIpoById(@PathVariable String ipoId) {
-        return iposService.getIpoById(ipoId);
+    public ResponseEntity<Ipo> getIpoById(@PathVariable String ipoId) {
+        Ipo ipo = iposService.getIpoById(ipoId);
+        if (ipo == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(ipo);
     }
 
-    @PostMapping("/save")
-    public Ipo saveIpo(@RequestBody Ipo ipo) {
-        return iposService.saveIpo(ipo);
+    @PostMapping
+    public ResponseEntity<Ipo> saveIpo(@RequestBody Ipo ipo) {
+        Ipo savedIpo = iposService.saveIpo(ipo);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedIpo);
     }
 
-    @PutMapping("/update/{ipoId}")
-    public Ipo updateIpo(@PathVariable String ipoId, @RequestBody Ipo ipo) {
-        return iposService.updateIpo(ipoId, ipo);
+    @PutMapping("/{ipoId}")
+    public ResponseEntity<Ipo> updateIpo(@PathVariable String ipoId, @RequestBody Ipo ipo) {
+        Ipo updatedIpo = iposService.updateIpo(ipoId, ipo);
+        if (updatedIpo == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(updatedIpo);
     }
 
-    @DeleteMapping("/delete/{ipoId}")
-    public boolean deleteIpo(@PathVariable String ipoId) {
-        return iposService.deleteIpo(ipoId);
+    @DeleteMapping("/{ipoId}")
+    public ResponseEntity<Void> deleteIpo(@PathVariable String ipoId) {
+        boolean deleted = iposService.deleteIpo(ipoId);
+        if (deleted) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }

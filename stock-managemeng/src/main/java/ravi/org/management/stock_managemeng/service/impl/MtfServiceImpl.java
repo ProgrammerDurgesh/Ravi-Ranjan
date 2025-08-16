@@ -6,6 +6,7 @@ import ravi.org.management.stock_managemeng.dao.Mtf;
 import ravi.org.management.stock_managemeng.repo.MtfRepo;
 import ravi.org.management.stock_managemeng.service.MtfService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,21 @@ public class MtfServiceImpl implements MtfService {
 
     @Autowired
     private MtfRepo mtfRepo;
+
+    @Override
+    public List<Mtf> filter(String quantity, String share_symbol, String expiry_date) {
+        List<Mtf> saveRecord = new ArrayList<>();
+        List<Mtf> all = mtfRepo.findAll();
+        for(int i=0; i<=all.size(); i++)
+        {
+            Mtf mtf = all.get(i);
+            if(quantity.equals(mtf.getQuantity()) && share_symbol.equalsIgnoreCase(mtf.getShareSymbol()) && expiry_date.equals(mtf.getExpiryDate().toString()))
+            {
+               saveRecord.add(mtf);
+            }
+        }
+        return saveRecord;
+    }
 
     @Override
     public List<Mtf> getAllMtfRecords() {

@@ -16,6 +16,12 @@ public class MtfController {
         this.mtfService = mtfService;
     }
 
+    @GetMapping("/filter/{quantity}/{share_symbol}/{expiry_date}")
+    public List<Mtf> filter(@PathVariable String quantity, @PathVariable String share_symbol, @PathVariable String expiry_date)
+    {
+        return mtfService.filter(quantity,share_symbol,expiry_date);
+    }
+
     @GetMapping("/all")
     public List<Mtf> getAllMtfRecords() {
         return mtfService.getAllMtfRecords();

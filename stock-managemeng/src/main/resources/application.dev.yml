@@ -1,5 +1,4 @@
 spring:
-  profile: stage
   application:
     name: stock-management
   datasource:
